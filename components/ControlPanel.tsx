@@ -1,13 +1,11 @@
 import React from 'react';
-import { ImageFile, CustomizationOptions } from '../types';
+import { ImageFile } from '../types';
 
 interface ControlPanelProps {
   modelImage: ImageFile | null;
   setModelImage: (image: ImageFile | null) => void;
   itemImages: ImageFile[];
   setItemImages: (images: ImageFile[]) => void;
-  customizations: CustomizationOptions;
-  setCustomizations: (customizations: CustomizationOptions) => void;
   customPrompt: string;
   setCustomPrompt: (prompt: string) => void;
   onGenerate: () => void;
@@ -45,8 +43,6 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
   setModelImage,
   itemImages,
   setItemImages,
-  customizations,
-  setCustomizations,
   customPrompt,
   setCustomPrompt,
   onGenerate,
@@ -82,10 +78,6 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
         setItemImages(itemImages.filter(image => image.id !== id));
     };
 
-    const handleCustomizationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setCustomizations({ ...customizations, [e.target.name]: e.target.value });
-    };
-
     return (
         <div className="w-full lg:w-1/3 xl:w-1/4 bg-gray-800 p-6 space-y-6 overflow-y-auto h-full rounded-l-2xl">
             <h2 className="text-2xl font-bold text-center text-purple-400">Customization Studio</h2>
@@ -113,40 +105,8 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
                 )}
             </div>
 
-            <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-gray-300">3. Customize Model's Look</h3>
-                <div>
-                    <label htmlFor="shape" className="block text-sm font-medium text-gray-400">Body Shape</label>
-                    <select name="shape" id="shape" value={customizations.shape} onChange={handleCustomizationChange} className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-600 bg-gray-700 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm rounded-md">
-                        <option>Default</option>
-                        <option>Athletic</option>
-                        <option>Curvy</option>
-                        <option>Slender</option>
-                    </select>
-                </div>
-                <div>
-                    <label htmlFor="expression" className="block text-sm font-medium text-gray-400">Facial Expression</label>
-                    <select name="expression" id="expression" value={customizations.expression} onChange={handleCustomizationChange} className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-600 bg-gray-700 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm rounded-md">
-                        <option>Default</option>
-                        <option>Smiling</option>
-                        <option>Neutral</option>
-                        <option>Serious</option>
-                        <option>Joyful</option>
-                    </select>
-                </div>
-                 <div>
-                    <label htmlFor="beauty" className="block text-sm font-medium text-gray-400">Aesthetic Style</label>
-                    <select name="beauty" id="beauty" value={customizations.beauty} onChange={handleCustomizationChange} className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-600 bg-gray-700 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm rounded-md">
-                        <option>Default</option>
-                        <option>Natural</option>
-                        <option>Glamorous</option>
-                        <option>Ethereal</option>
-                    </select>
-                </div>
-            </div>
-
             <div className="space-y-2">
-                <label htmlFor="custom-prompt" className="block text-lg font-semibold text-gray-300">4. Add Custom Instructions</label>
+                <label htmlFor="custom-prompt" className="block text-lg font-semibold text-gray-300">3. Add Custom Instructions</label>
                 <textarea 
                     id="custom-prompt" 
                     rows={4}
