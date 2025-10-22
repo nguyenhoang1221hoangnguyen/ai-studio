@@ -1,0 +1,5 @@
+{
+  "name": "Copy of Gemini Virtual Try-On Studio",
+  "description": "An AI-powered virtual dressing room. Upload a model's photo, select clothing and accessories, customize their look, and let Gemini generate the final image.",
+  "requestFramePermissions": []
+}
